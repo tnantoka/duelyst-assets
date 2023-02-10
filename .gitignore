@@ -19,3 +19,14 @@ pnpm-debug.log*
 
 # macOS-specific files
 .DS_Store
+
+/public/duelyst-1.97.12/*
+/public/duelyst-1.97.12/app/*
+/public/duelyst-1.97.12/app/resources/*
+
+!/public/duelyst-1.97.12/app/
+!/public/duelyst-1.97.12/app/resources/
+!/public/duelyst-1.97.12/app/resources/generals/
+!/public/duelyst-1.97.12/app/resources/units/
+!/public/duelyst-1.97.12/app/resources/unit_gifs/
+
