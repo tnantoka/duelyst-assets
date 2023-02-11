@@ -1,5 +1,5 @@
 {
-	"name": "duelyst",
+	"name": "duelyst-assets",
 	"type": "module",
 	"version": "0.0.1",
 	"scripts": {
@@ -10,6 +10,7 @@
 		"astro": "astro"
 	},
 	"dependencies": {
-		"astro": "^2.0.10"
+		"astro": "^2.0.10",
+		"plist": "^3.0.6"
 	}
 }

@@ -1,0 +1,32 @@
+---
+import Resources from '../scripts/resources';
+
+export interface Props {
+  name: string;
+}
+
+const { name } = Astro.props;
+
+const unitGifs = Resources.unit.gifs;
+const unitPlists = Resources.unit.plists;
+---
+
+<dt>
+  <a href={`/units/${name}`}>{name}</a>
+</dt>    
+<dd>
+  {unitGifs[name] ? (
+    <img src={unitGifs[name]}>
+  ) : (
+    'no gif'
+  )}
+
+  {unitPlists[name] ? (
+    <pre>
+      {JSON.stringify(unitPlists[name])}
+    </pre>
+  ) : (
+    'no plist'
+  )}
+
+</dd>
