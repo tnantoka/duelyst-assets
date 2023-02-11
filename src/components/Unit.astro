@@ -13,20 +13,15 @@ const unitPlists = Resources.unit.plists;
 
 <dt>
   <a href={`/units/${name}`}>{name}</a>
-</dt>    
+</dt>
 <dd>
-  {unitGifs[name] ? (
-    <img src={unitGifs[name]}>
-  ) : (
-    'no gif'
-  )}
+  {unitGifs[name] ? <img src={unitGifs[name]} /> : 'no gif'}
 
-  {unitPlists[name] ? (
-    <pre>
-      {JSON.stringify(unitPlists[name])}
-    </pre>
-  ) : (
-    'no plist'
-  )}
-
+  {
+    unitPlists[name] ? (
+      <pre>{JSON.stringify(unitPlists[name])}</pre>
+    ) : (
+      'no plist'
+    )
+  }
 </dd>

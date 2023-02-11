@@ -11,18 +11,15 @@ const unitPlists = Resources.unit.plists;
 <Layout title="Units">
   <main>
     <h2>Units</h2>
-    
+
     <ul>
       <li>{Object.keys(unitGifs).length}</li>
       <li>{Object.keys(unitImages).length}</li>
       <li>{Object.keys(unitPlists).length}</li>
     </ul>
-     
+
     <dl>
-      {unitNames.map((name) => (
-        <Unit name={name} />
-      ))}
+      {unitNames.map((name) => <Unit name={name} />)}
     </dl>
-  
   </main>
 </Layout>

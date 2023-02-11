@@ -6,14 +6,14 @@ import Resources from '../../scripts/resources';
 const { name } = Astro.params;
 
 export const getStaticPaths = async () => {
-  return Resources.unit.names.map((name) => ({ params: { name } }))
-}
+  return Resources.unit.names.map((name) => ({ params: { name } }));
+};
 ---
 
 <Layout title={name}>
   <main>
     <h2>{name}</h2>
-    
+
     <Unit name={name} />
   </main>
 </Layout>
