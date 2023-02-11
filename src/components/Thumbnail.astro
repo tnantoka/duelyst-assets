@@ -1,5 +1,6 @@
 ---
 import Resources from '../scripts/resources';
+import Frame from './Frame.astro';
 
 export interface Props {
   name: string;
@@ -8,16 +9,8 @@ export interface Props {
 const { name } = Astro.props;
 
 const unitGifs = Resources.unit.gifs;
-const unitImages = Resources.unit.images;
-const unitPlists = Resources.unit.plists;
 
 const gif = unitGifs[name];
-const image = unitImages[name];
-
-const plist = unitPlists[name];
-const frameKeys = Object.keys(plist.frames)
-const breathing = frameKeys.find((name) => name.includes('breath')) ?? frameKeys[0];
-const frame = plist.frames[breathing].frame.replace(/[{}]/g, '').split(',').map((n) => parseInt(n));
 ---
 
-{gif !== undefined ? <img src={gif} /> : <div style={`background-image: url(${image}); background-position: left -${frame[0]}px top -${frame[1]}px; width: ${frame[2]}px; height: ${frame[3]}px;`}>}
+{gif !== undefined ? <img src={gif} /> : <Frame name={name} />}

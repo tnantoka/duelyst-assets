@@ -1,13 +1,13 @@
 import * as fs from 'node:fs';
 import * as plist from 'plist';
 
-const loadResources = (type, extname) => {
+const loadResources = (type: string, extname: string) => {
   const dir = `/duelyst-1.97.12/app/resources/${type}/`;
   const resources = fs.readdirSync(`./public${dir}`);
   return resources
-    .filter((filename) => new RegExp(`\\.${extname}$`).test(filename))
-    .filter((filename) => !filename.includes(' copy'))
-    .reduce((dict, filename) => {
+    .filter((filename: string) => new RegExp(`\\.${extname}$`).test(filename))
+    .filter((filename: string) => !filename.includes(' copy'))
+    .reduce((dict: { [key: string]: string }, filename: string) => {
       const key = filename.replace(/\.[^.]+$/, '').replace(/_breathing$/, '');
       const path = `${dir}${filename}`;
       const content =

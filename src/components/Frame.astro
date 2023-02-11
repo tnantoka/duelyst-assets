@@ -1,0 +1,32 @@
+---
+import Resources from '../scripts/resources';
+import { parseFrame } from '../scripts/frames';
+
+export interface Props {
+  name: string;
+  frameName?: string;
+}
+
+const { name, frameName } = Astro.props;
+
+const unitImages = Resources.unit.images;
+const unitPlists = Resources.unit.plists;
+
+const image = unitImages[name];
+
+const plist = unitPlists[name];
+
+const frameKeys = Object.keys(plist.frames)
+const frameKey = frameName ?? frameKeys.find((name) => name.includes('breath')) ?? frameKeys[0];
+
+const frame = parseFrame(plist.frames[frameKey].frame);
+
+const style = `
+  background-image: url(${image});
+  background-position: left -${frame.x}px top -${frame.y}px;
+  width: ${frame.w}px;
+  height: ${frame.h}px;
+`;
+---
+
+<div style={style}>
