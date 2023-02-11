@@ -1,5 +1,5 @@
 import * as fs from 'node:fs';
-import * as plist from 'plist';
+import plist from 'plist';
 
 const loadResources = (type: string, extname: string) => {
   const dir = `/duelyst-1.97.12/app/resources/${type}/`;
