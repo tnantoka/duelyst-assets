@@ -6,6 +6,7 @@ const loadResources = (type, extname) => {
   const resources = fs.readdirSync(`./public${dir}`);
   return resources
     .filter((filename) => new RegExp(`\\.${extname}$`).test(filename))
+    .filter((filename) => !filename.includes(' copy'))
     .reduce((dict, filename) => {
       const key = filename.replace(/\.[^.]+$/, '').replace(/_breathing$/, '');
       const path = `${dir}${filename}`;
