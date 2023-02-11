@@ -3,14 +3,14 @@ import Resources from '../scripts/resources';
 import Frame from './Frame.astro';
 
 export interface Props {
-  name: string;
+  unitName: string;
 }
 
-const { name } = Astro.props;
+const { unitName } = Astro.props;
 
 const unitGifs = Resources.unit.gifs;
 
-const gif = unitGifs[name];
+const gif = unitGifs[unitName];
 ---
 
-{gif !== undefined ? <img src={gif} /> : <Frame name={name} />}
+{gif !== undefined ? <img src={gif} /> : <Frame unitName={unitName} />}

@@ -1,0 +1,47 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Thumbnail from '../../components/Thumbnail.astro';
+import Frame from '../../components/Frame.astro';
+import CodeBlock from '../../components/CodeBlock.astro';
+import Resources from '../../scripts/resources';
+import { parseFrame } from '../../scripts/frames';
+
+const { unitName } = Astro.params;
+
+const image = Resources.unit.images[unitName];
+const plist = Resources.unit.plists[unitName];
+
+export const getStaticPaths = async () => {
+  return Resources.unit.names.map((unitName) => ({ params: { unitName } }));
+};
+---
+
+<Layout title={unitName}>
+  <main>
+    <Thumbnail unitName={unitName} />
+    <p class="bg-light">
+      <img src={image} class="img-fluid" />
+    </p>
+    <table class="table table-sm">
+      <tbody>
+        {
+          Object.entries(plist.frames).map(([frameName, frame]) => (
+            <tr>
+              <th class="align-middle">{frameName}</th>
+              <td class="align-middle">
+                <CodeBlock
+                  source={Object.entries(parseFrame(frame.frame))
+                    .map(([k, v]) => `${k}: ${v}`)
+                    .join('\n')}
+                />
+              </td>
+              <td class="align-middle">
+                <Frame unitName={unitName} frameName={frameName} />
+              </td>
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+  </main>
+</Layout>

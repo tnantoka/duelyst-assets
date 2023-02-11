@@ -3,21 +3,24 @@ import Resources from '../scripts/resources';
 import { parseFrame } from '../scripts/frames';
 
 export interface Props {
-  name: string;
+  unitName: string;
   frameName?: string;
 }
 
-const { name, frameName } = Astro.props;
+const { unitName, frameName } = Astro.props;
 
 const unitImages = Resources.unit.images;
 const unitPlists = Resources.unit.plists;
 
-const image = unitImages[name];
+const image = unitImages[unitName];
 
-const plist = unitPlists[name];
+const plist = unitPlists[unitName];
 
-const frameKeys = Object.keys(plist.frames)
-const frameKey = frameName ?? frameKeys.find((name) => name.includes('breath')) ?? frameKeys[0];
+const frameKeys = Object.keys(plist.frames);
+const frameKey =
+  frameName ??
+  frameKeys.find((name) => name.includes('breath')) ??
+  frameKeys[0];
 
 const frame = parseFrame(plist.frames[frameKey].frame);
 
@@ -29,4 +32,4 @@ const style = `
 `;
 ---
 
-<div style={style}>
+<div style={style}></div>

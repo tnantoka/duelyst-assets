@@ -17,13 +17,26 @@ import '../styles/utils.css';
     <link rel="icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
     <title>{pageTitle} - {title}</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
   </head>
   <body>
     <nav class="navbar navbar-expand border-bottom">
       <div class="container">
         <a class="navbar-brand" href="/">Duelyst Assets</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
           <span class="navbar-toggler-icon"></span>
         </button>
         <ul class="navbar-nav">
@@ -33,7 +46,10 @@ import '../styles/utils.css';
         </ul>
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="nav-link" href="https://github.com/tnantoka/duelyst-assets">GitHub</a>
+            <a
+              class="nav-link"
+              href="https://github.com/tnantoka/duelyst-assets">GitHub</a
+            >
           </li>
         </ul>
       </div>
@@ -45,15 +61,18 @@ import '../styles/utils.css';
       <slot />
 
       <footer class="small mt-4 mb-4">
-        &copy; 2023 <a href="https://twitter.com/tnantoka" class="text-decoration-none text-reset">tnantoka</a>
+        &copy; 2023 <a
+          href="https://twitter.com/tnantoka"
+          class="text-decoration-none text-reset">tnantoka</a
+        >
       </footer>
     </div>
   </body>
 </html>
 
 <style is:global>
-div,
-input {
-  border-radius: 0 !important;
-}
+  div,
+  input {
+    border-radius: 0 !important;
+  }
 </style>

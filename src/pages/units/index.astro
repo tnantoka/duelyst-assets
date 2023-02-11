@@ -10,26 +10,36 @@ const unitNames = Resources.unit.names;
   <main>
     <div>
       <p class="text-end mb-1 text-muted small">
-        {unitNames.length} / {unitNames.length}
+        <span class="search-count"></span> / {unitNames.length}
       </p>
-      <input type="search" class="form-control" placeholder="Search">
+      <input
+        type="search"
+        class="form-control search-query"
+        placeholder="Search"
+      />
     </div>
 
     <div class="container mt-4 py-3">
       <div class="row row-gap-3 text-break">
-        {unitNames.map((name) => (
-          <div class="col-6 col-sm-4 col-md-3 col-lg-2 d-flex">
-            <a href={`/units/${name}`} class="flex-fill d-flex flex-column text-decoration-none text-reset hover:bg-light">
-              <div class="flex-fill d-flex align-items-center justify-content-center">
-                <Thumbnail name={name} />
-              </div>
-              <p class="text-center">
-                {name}
-              </p>
-            </a>
-          </div>
-        ))}
+        {
+          unitNames.map((unitName) => (
+            <div class="col-6 col-sm-4 col-md-3 col-lg-2 d-flex d-none unit-list-item">
+              <a
+                href={`/units/${unitName}`}
+                class="flex-fill d-flex flex-column text-decoration-none text-reset hover:bg-light"
+              >
+                <div class="flex-fill d-flex align-items-center justify-content-center">
+                  <Thumbnail unitName={unitName} />
+                </div>
+                <p class="text-center">{unitName}</p>
+              </a>
+            </div>
+          ))
+        }
       </div>
     </div>
+    <script>
+      import '../../scripts/search.ts';
+    </script>
   </main>
 </Layout>
