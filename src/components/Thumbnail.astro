@@ -1,5 +1,5 @@
 ---
-import Resources from '../scripts/resources';
+import { units } from '../scripts/resources';
 import Frame from './Frame.astro';
 
 export interface Props {
@@ -8,9 +8,13 @@ export interface Props {
 
 const { unitName } = Astro.props;
 
-const unitGifs = Resources.unit.gifs;
-
-const gif = unitGifs[unitName];
+const unit = units[unitName];
 ---
 
-{gif !== undefined ? <img src={gif} /> : <Frame unitName={unitName} />}
+{
+  unit.gif !== undefined ? (
+    <img src={unit.gif} />
+  ) : (
+    <Frame unitName={unitName} />
+  )
+}

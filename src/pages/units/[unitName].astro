@@ -3,16 +3,15 @@ import Layout from '../../layouts/Layout.astro';
 import Thumbnail from '../../components/Thumbnail.astro';
 import Frame from '../../components/Frame.astro';
 import CodeBlock from '../../components/CodeBlock.astro';
-import Resources from '../../scripts/resources';
+import { units, unitNames } from '../../scripts/resources';
 import { parseFrame } from '../../scripts/frames';
 
 const { unitName } = Astro.params;
 
-const image = Resources.unit.images[unitName];
-const plist = Resources.unit.plists[unitName];
+const unit = units[unitName];
 
 export const getStaticPaths = async () => {
-  return Resources.unit.names.map((unitName) => ({ params: { unitName } }));
+  return unitNames.map((unitName) => ({ params: { unitName } }));
 };
 ---
 
@@ -20,12 +19,12 @@ export const getStaticPaths = async () => {
   <main>
     <Thumbnail unitName={unitName} />
     <p class="bg-light">
-      <img src={image} class="img-fluid" />
+      <img src={unit.image} class="img-fluid" />
     </p>
     <table class="table table-sm">
       <tbody>
         {
-          Object.entries(plist.frames).map(([frameName, frame]) => (
+          Object.entries(unit.plist.frames).map(([frameName, frame]) => (
             <tr>
               <th class="align-middle">{frameName}</th>
               <td class="align-middle">

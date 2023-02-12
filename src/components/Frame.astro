@@ -1,5 +1,5 @@
 ---
-import Resources from '../scripts/resources';
+import { units } from '../scripts/resources';
 import { parseFrame } from '../scripts/frames';
 
 export interface Props {
@@ -9,23 +9,18 @@ export interface Props {
 
 const { unitName, frameName } = Astro.props;
 
-const unitImages = Resources.unit.images;
-const unitPlists = Resources.unit.plists;
+const unit = units[unitName];
 
-const image = unitImages[unitName];
-
-const plist = unitPlists[unitName];
-
-const frameKeys = Object.keys(plist.frames);
+const frameKeys = Object.keys(unit.plist.frames);
 const frameKey =
   frameName ??
   frameKeys.find((name) => name.includes('breath')) ??
   frameKeys[0];
 
-const frame = parseFrame(plist.frames[frameKey].frame);
+const frame = parseFrame(unit.plist.frames[frameKey].frame);
 
 const style = `
-  background-image: url(${image});
+  background-image: url(${unit.image});
   background-position: left -${frame.x}px top -${frame.y}px;
   width: ${frame.w}px;
   height: ${frame.h}px;

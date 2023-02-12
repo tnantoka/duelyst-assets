@@ -22,11 +22,26 @@ const loadResources = (type: string, extname: string) => {
 };
 
 const images = loadResources('units', 'png');
-export default {
-  unit: {
-    names: Object.keys(images),
-    gifs: loadResources('unit_gifs', 'gif'),
-    images,
-    plists: loadResources('units', 'plist'),
-  },
+export const unitNames = Object.keys(images);
+const gifs = loadResources('unit_gifs', 'gif');
+const plists = loadResources('units', 'plist');
+
+type Unit = {
+  name: string;
+  image: string;
+  gif?: string;
+  plist: any;
 };
+
+export const units = unitNames.reduce(
+  (dict: { [key: string]: Unit }, name: string) => ({
+    ...dict,
+    [name]: {
+      name,
+      image: images[name],
+      gif: gifs[name],
+      plist: plists[name],
+    },
+  }),
+  {}
+);
