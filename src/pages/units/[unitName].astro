@@ -1,7 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import Thumbnail from '../../components/Thumbnail.astro';
-import Frame from '../../components/Frame.astro';
+import Thumbnail from '../../components/Thumbnail';
+import Frame from '../../components/Frame';
 import CodeBlock from '../../components/CodeBlock.astro';
 import { units, unitNames } from '../../scripts/resources';
 import { parseFrame } from '../../scripts/frames';
@@ -17,7 +17,7 @@ export const getStaticPaths = async () => {
 
 <Layout title={unitName}>
   <main>
-    <Thumbnail unitName={unitName} />
+    <Thumbnail unit={unit} />
     <p class="bg-light">
       <img src={unit.image} class="img-fluid" />
     </p>
@@ -35,7 +35,7 @@ export const getStaticPaths = async () => {
                 />
               </td>
               <td class="align-middle">
-                <Frame unitName={unitName} frameName={frameName} />
+                <Frame unit={unit} frameName={frameName} />
               </td>
             </tr>
           ))
