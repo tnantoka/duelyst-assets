@@ -1,4 +1,4 @@
-import { parseFrame } from '../scripts/frames';
+import { parseFrame, parseSize } from '../scripts/frames';
 import type { Unit } from '../scripts/types';
 
 export interface Props {
@@ -14,15 +14,23 @@ const Frame: React.FC<Props> = ({ unit, frameName }) => {
     frameKeys[0];
 
   const frame = parseFrame(unit.plist.frames[frameKey].frame);
+  const size = parseSize(unit.plist.metadata.size);
 
-  const style = {
-    backgroundImage: `url(${unit.image})`,
-    backgroundPosition: `left -${frame.x}px top -${frame.y}px`,
-    width: `${frame.w}px`,
-    height: `${frame.h}px`,
-  };
-
-  return <div style={style} />;
+  return (
+    <div
+      className="position-relative overflow-hidden"
+      style={{ width: frame.w, height: frame.h }}
+    >
+      <img
+        src={unit.image}
+        width={size.w}
+        height={size.h}
+        loading="lazy"
+        className="position-absolute"
+        style={{ left: -frame.x, top: -frame.y }}
+      />
+    </div>
+  );
 };
 
 export default Frame;
